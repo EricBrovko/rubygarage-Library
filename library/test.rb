@@ -5,19 +5,19 @@ Dir["./lib/*.rb"].each {|file| require file }
 library = Library.new
 
 # Creating Author instances
-author = Author.new("Eric", "Brovko")
+author = Author.new("Joseph", "Jacobs")
 library.add_author(author)
 
 # Creating Book instances
-book = Book.new("Merlin Monroe", author)
+book = Book.new("The Three Sillies", author)
 library.add_book(book)
 
-second_book = Book.new("Moo Moo", author)
+second_book = Book.new("Paddy O'Kelly and the Weasel", author)
 library.add_book(second_book)
 
 # Creating Reader instances
-reader = Reader.new("Kirill", "myemalcool@gmail.com", "Dnipropetrovsk", "New Year street", 54)
-second_reader = Reader.new("Eric", "myemalcool@gmail.com", "Dnipropetrovsk", "New Year street", 54)
+reader = Reader.new("Kirill", "kirillcool@gmail.com", "Dnipropetrovsk", "New Year street", 55)
+second_reader = Reader.new("Eric", "ericcool@gmail.com", "Dnipropetrovsk", "New Year street", 54)
 
 library.add_reader(reader)
 
