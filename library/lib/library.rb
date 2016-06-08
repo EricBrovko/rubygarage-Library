@@ -1,4 +1,6 @@
 require "byebug"
+require 'yaml'
+
 class Library
   attr_reader :authors, :books
 
@@ -53,6 +55,33 @@ class Library
     readers.uniq.size
   end
 
+  def save_lib_data(file_name)
+    file_name = file_name + '.yml'
+    data = {
+      authors: YAML.dump(@authors),
+      books: YAML.dump(@books),
+      readers: YAML.dump(@readers),
+      orders: YAML.dump(@orders)
+    }
+    file = File.new(@path + file_name, 'w')
+    file.write(YAML.dump data)
+    file.close
+  end
+
+  def load_lib_data(file_name)
+    file_name = file_name + '.yml'
+    if File.exist?(@path + file_name)
+      file = File.open(@path + file_name)
+      data = YAML.load file.read
+      @authors = YAML.load data[:authors]
+      @books = YAML.load data[:books]
+      @readers = YAML.load data[:readers]
+      @orders = YAML.load data[:orders]
+    else
+      raise(Exception.new('You are trying to load a nonexistent file'))
+    end
+  end
+
   private
 
   def initialize_storages
@@ -60,6 +89,7 @@ class Library
     @books = []
     @readers = []
     @orders = []
+    @path = './saved_files/'
   end
 
   def orders_grouped_by(key)

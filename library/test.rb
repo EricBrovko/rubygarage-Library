@@ -32,4 +32,8 @@ library.add_order(second_order)
 
 # puts library.top_reader.name
 # puts library.top_book.title
-puts library.top_books_readers_count
+# puts library.top_books_readers_count
+
+# library.save_lib_data('test')
+# library.load_lib_data('file_does_not_exist')
+# library.load_lib_data('test')

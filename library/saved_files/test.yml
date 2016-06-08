@@ -1,0 +1,53 @@
+---
+:authors: |
+  ---
+  - !ruby/object:Author
+    name: Eric
+    biography: Brovko
+:books: |
+  ---
+  - !ruby/object:Book
+    title: Merlin Monroe
+    author: &1 !ruby/object:Author
+      name: Eric
+      biography: Brovko
+  - !ruby/object:Book
+    title: Moo Moo
+    author: *1
+:readers: |
+  ---
+  - !ruby/object:Reader
+    name: Kirill
+    email: myemalcool@gmail.com
+    city: Dnipropetrovsk
+    street: New Year street
+    house: 54
+:orders: |
+  ---
+  - &1 !ruby/object:Order
+    book: !ruby/object:Book
+      title: Merlin Monroe
+      author: &2 !ruby/object:Author
+        name: Eric
+        biography: Brovko
+    reader: !ruby/object:Reader
+      name: Kirill
+      email: myemalcool@gmail.com
+      city: Dnipropetrovsk
+      street: New Year street
+      house: 54
+    date: 2016-06-08
+  - *1
+  - *1
+  - &3 !ruby/object:Order
+    book: !ruby/object:Book
+      title: Moo Moo
+      author: *2
+    reader: !ruby/object:Reader
+      name: Eric
+      email: myemalcool@gmail.com
+      city: Dnipropetrovsk
+      street: New Year street
+      house: 54
+    date: 2016-06-08
+  - *3
